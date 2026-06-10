@@ -1,0 +1,92 @@
+{
+  "name": "Investment",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User who made this investment"
+    },
+    "asset_name": {
+      "type": "string",
+      "description": "Name of the asset (Bitcoin, Tesla, etc.)"
+    },
+    "asset_symbol": {
+      "type": "string",
+      "description": "Symbol (BTC, TSLA, etc.)"
+    },
+    "asset_type": {
+      "type": "string",
+      "enum": [
+        "crypto",
+        "stock",
+        "meme"
+      ],
+      "description": "Type of asset"
+    },
+    "amount_invested": {
+      "type": "number",
+      "description": "Amount invested in USD"
+    },
+    "current_value": {
+      "type": "number",
+      "description": "Current value of the investment"
+    },
+    "profit_loss": {
+      "type": "number",
+      "default": 0,
+      "description": "Current profit or loss"
+    },
+    "entry_price": {
+      "type": "number",
+      "description": "Asset price at time of entry"
+    },
+    "target_price": {
+      "type": "number",
+      "description": "Target price for this trade"
+    },
+    "apy": {
+      "type": "number",
+      "description": "Annual percentage yield"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "closed",
+        "pending"
+      ],
+      "default": "active"
+    },
+    "lock_period_days": {
+      "type": "number",
+      "description": "Lock period in days"
+    },
+    "leverage": {
+      "type": "string",
+      "enum": [
+        "1x",
+        "2x",
+        "5x",
+        "10x",
+        "25x",
+        "50x",
+        "100x"
+      ],
+      "default": "1x"
+    },
+    "position_type": {
+      "type": "string",
+      "enum": [
+        "long",
+        "short"
+      ],
+      "default": "long"
+    }
+  },
+  "required": [
+    "user_id",
+    "asset_name",
+    "asset_symbol",
+    "amount_invested"
+  ]
+}

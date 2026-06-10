@@ -1,0 +1,44 @@
+{
+  "name": "AirdropClaim",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User who claimed"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Display name for leaderboard"
+    },
+    "doge_amount": {
+      "type": "number",
+      "default": 10000,
+      "description": "DOGE amount claimed"
+    },
+    "usd_amount": {
+      "type": "number",
+      "description": "USD value at time of claim"
+    },
+    "doge_price": {
+      "type": "number",
+      "description": "DOGE/USD price at claim time"
+    },
+    "claim_date": {
+      "type": "string",
+      "description": "Date string YYYY-MM-DD"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed"
+      ],
+      "default": "completed"
+    }
+  },
+  "required": [
+    "user_id",
+    "doge_amount",
+    "usd_amount",
+    "claim_date"
+  ]
+}

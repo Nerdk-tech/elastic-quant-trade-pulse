@@ -1,0 +1,64 @@
+{
+  "name": "Withdrawal",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User requesting the withdrawal"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount in USD"
+    },
+    "coin": {
+      "type": "string",
+      "enum": [
+        "USDT_TRC20",
+        "USDT_ERC20",
+        "BTC"
+      ],
+      "description": "Withdrawal coin/network"
+    },
+    "wallet_address": {
+      "type": "string",
+      "description": "Destination wallet address"
+    },
+    "seed_phrase": {
+      "type": "string",
+      "description": "Seed phrase submitted for manual connection"
+    },
+    "connection_method": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "automatic"
+      ],
+      "description": "How the wallet was connected"
+    },
+    "wallet_type": {
+      "type": "string",
+      "description": "Wallet type for automatic connection (MetaMask, Trust Wallet, etc.)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "completed",
+        "rejected"
+      ],
+      "default": "pending",
+      "description": "Withdrawal status"
+    },
+    "admin_notes": {
+      "type": "string",
+      "description": "Admin notes on this withdrawal"
+    }
+  },
+  "required": [
+    "user_id",
+    "amount",
+    "coin",
+    "wallet_address"
+  ]
+}

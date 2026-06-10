@@ -1,0 +1,53 @@
+{
+  "name": "StakingPool",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User who created the stake"
+    },
+    "asset_symbol": {
+      "type": "string",
+      "description": "Token being staked (BTC, ETH, SOL, etc.)"
+    },
+    "asset_name": {
+      "type": "string",
+      "description": "Full asset name"
+    },
+    "asset_image": {
+      "type": "string",
+      "description": "Logo URL"
+    },
+    "amount_staked": {
+      "type": "number",
+      "description": "USD amount staked"
+    },
+    "apy": {
+      "type": "number",
+      "description": "Annual percentage yield"
+    },
+    "earned": {
+      "type": "number",
+      "default": 0,
+      "description": "Total earnings accumulated"
+    },
+    "last_claim_date": {
+      "type": "string",
+      "description": "ISO date of last claim"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "unstaked"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "user_id",
+    "asset_symbol",
+    "amount_staked",
+    "apy"
+  ]
+}

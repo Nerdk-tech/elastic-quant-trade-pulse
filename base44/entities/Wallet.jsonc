@@ -1,0 +1,33 @@
+{
+  "name": "Wallet",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "The user ID who owns this wallet"
+    },
+    "balance": {
+      "type": "number",
+      "default": 0,
+      "description": "Current USD balance"
+    },
+    "total_invested": {
+      "type": "number",
+      "default": 0,
+      "description": "Total amount invested"
+    },
+    "total_earnings": {
+      "type": "number",
+      "default": 0,
+      "description": "Total earnings from investments"
+    },
+    "total_withdrawn": {
+      "type": "number",
+      "default": 0,
+      "description": "Total amount withdrawn"
+    }
+  },
+  "required": [
+    "user_id"
+  ]
+}

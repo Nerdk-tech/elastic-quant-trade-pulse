@@ -1,0 +1,54 @@
+{
+  "name": "Deposit",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "User who made this deposit"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount in USD"
+    },
+    "coin": {
+      "type": "string",
+      "enum": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "USDT_ERC20",
+        "USDT_TRC20",
+        "TRX",
+        "BNB"
+      ],
+      "description": "Selected cryptocurrency"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "rejected"
+      ],
+      "default": "pending",
+      "description": "Verification status"
+    },
+    "tx_hash": {
+      "type": "string",
+      "description": "Transaction hash/ID provided by user"
+    },
+    "screenshot_url": {
+      "type": "string",
+      "description": "URL of uploaded proof screenshot"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Admin notes"
+    }
+  },
+  "required": [
+    "user_id",
+    "amount",
+    "coin"
+  ]
+}
